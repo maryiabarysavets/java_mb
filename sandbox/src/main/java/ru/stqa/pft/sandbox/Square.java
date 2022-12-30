@@ -8,7 +8,7 @@ public class Square {
     this.l = l;
   }
 
-  public  double area() {
+  public double area() {
     return this.l * this.l;
   }
 }
