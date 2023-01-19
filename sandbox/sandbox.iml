@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module relativePaths="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output/>
+    <orderEntry type="inheritedJdk"/>
+    <content url="file://$MODULE_DIR$/">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false"/>
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true"/>
+      <excludeFolder url="file://$MODULE_DIR$/.gradle"/>
+      <excludeFolder url="file://$MODULE_DIR$/build"/>
+    </content>
+    <orderEntry type="sourceFolder" forTests="false"/>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///Users/maryiabarysavets/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.7.1/8e96c60d4967a8df6dc06c3c7cf22392e3a51794/testng-7.7.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar:///Users/maryiabarysavets/.gradle/caches/modules-2/files-2.1/org.testng/testng/7.7.1/d43343e3feaca5aaf23adbc0a4fe0171d599f85a/testng-7.7.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///Users/maryiabarysavets/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.36/6c62681a2f655b49963a5983b8b0950a6120ae14/slf4j-api-1.7.36.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar:///Users/maryiabarysavets/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.36/ae9c1aae0033af915cfa75d850eb9d880f21a701/slf4j-api-1.7.36-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///Users/maryiabarysavets/.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.82/a7c5fef184d238065de38f81bbc6ee50cca2e21/jcommander-1.82.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar:///Users/maryiabarysavets/.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.82/5cf95a2e18d79d404fd81263db36862287e736cc/jcommander-1.82-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="jar:///Users/maryiabarysavets/.gradle/caches/modules-2/files-2.1/org.webjars/jquery/3.6.1/d08df6250157cd2db3d9b01b11b76e9b7225083a/jquery-3.6.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar:///Users/maryiabarysavets/.gradle/caches/modules-2/files-2.1/org.webjars/jquery/3.6.1/ce7c1ffa7f383388a0969f0a227a30c598e516cb/jquery-3.6.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="jar:///Users/maryiabarysavets/.gradle/caches/modules-2/files-2.1/org.webjars/jquery/3.6.1/d08df6250157cd2db3d9b01b11b76e9b7225083a/jquery-3.6.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar:///Users/maryiabarysavets/.gradle/caches/modules-2/files-2.1/org.webjars/jquery/3.6.1/ce7c1ffa7f383388a0969f0a227a30c598e516cb/jquery-3.6.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+  <component name="ModuleRootManager"/>
+</module>
