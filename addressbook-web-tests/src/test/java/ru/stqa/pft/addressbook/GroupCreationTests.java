@@ -5,13 +5,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import java.time.Duration;
 
 public class GroupCreationTests {
   private WebDriver wd;
 
   @BeforeMethod(alwaysRun = true)
-  public void setUp() {
+  public void setUp() throws Exception {
     System.setProperty("web-driver.chrome.driver", "");
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
@@ -30,7 +31,7 @@ public class GroupCreationTests {
   }
 
   @Test
-  public void testGroupCreation() {
+  public void testGroupCreation() throws Exception {
     goToGroupPage();
     initGroupCreation();
     fillGroupForm(new GroupData("test1", "test2", "test3"));
@@ -68,10 +69,26 @@ public class GroupCreationTests {
   }
 
   @AfterMethod(alwaysRun = true)
-  public void tearDown() {
+  public void tearDown() throws Exception {
     wd.quit();
-
   }
 
+  private boolean isElementPresent(By by) {
+    try {
+      wd.findElement(by);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
+  }
+
+  private boolean isAlertPresent() {
+    try {
+      wd.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+  }
 
 }
