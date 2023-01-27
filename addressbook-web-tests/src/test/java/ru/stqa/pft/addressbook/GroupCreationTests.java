@@ -17,6 +17,10 @@ public class GroupCreationTests {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     wd.get("http://localhost/addressbook/index.php");
+    login();
+  }
+
+  private void login() {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
@@ -28,9 +32,22 @@ public class GroupCreationTests {
 
   @Test
   public void testGroupCreation() {
-    wd.findElement(By.linkText("groups")).click();
-    wd.get("http://localhost/addressbook/group.php");
-    wd.findElement(By.name("new")).click();
+    goToGroupPage();
+    initGroupCreation();
+    fillGroupForm();
+    submitGroupCreation();
+    returnToGroupPage();
+  }
+
+  private void returnToGroupPage() {
+    wd.findElement(By.linkText("group page")).click();
+  }
+
+  private void submitGroupCreation() {
+    wd.findElement(By.name("submit")).click();
+  }
+
+  private void fillGroupForm() {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
     wd.findElement(By.name("group_name")).sendKeys("test1");
@@ -40,8 +57,15 @@ public class GroupCreationTests {
     wd.findElement(By.name("group_footer")).click();
     wd.findElement(By.name("group_footer")).clear();
     wd.findElement(By.name("group_footer")).sendKeys("test3");
-    wd.findElement(By.name("submit")).click();
-    wd.findElement(By.linkText("group page")).click();
+  }
+
+  private void initGroupCreation() {
+    wd.findElement(By.name("new")).click();
+  }
+
+  private void goToGroupPage() {
+    wd.findElement(By.linkText("groups")).click();
+    wd.get("http://localhost/addressbook/group.php");
   }
 
   @AfterMethod(alwaysRun = true)
