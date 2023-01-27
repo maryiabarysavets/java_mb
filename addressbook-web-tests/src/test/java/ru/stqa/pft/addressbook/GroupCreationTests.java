@@ -17,16 +17,16 @@ public class GroupCreationTests {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     wd.get("http://localhost/addressbook/index.php");
-    login();
+    login("admin", "secret");
   }
 
-  private void login() {
+  private void login(String username, String password) {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys("admin");
+    wd.findElement(By.name("user")).sendKeys(username);
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys("secret");
+    wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
@@ -34,7 +34,7 @@ public class GroupCreationTests {
   public void testGroupCreation() {
     goToGroupPage();
     initGroupCreation();
-    fillGroupForm();
+    fillGroupForm("test1", "test2", "test3");
     submitGroupCreation();
     returnToGroupPage();
   }
@@ -47,16 +47,16 @@ public class GroupCreationTests {
     wd.findElement(By.name("submit")).click();
   }
 
-  private void fillGroupForm() {
+  private void fillGroupForm(String name, String header, String footer) {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys("test1");
+    wd.findElement(By.name("group_name")).sendKeys(name);
     wd.findElement(By.name("group_header")).click();
     wd.findElement(By.name("group_header")).clear();
-    wd.findElement(By.name("group_header")).sendKeys("test2");
+    wd.findElement(By.name("group_header")).sendKeys(header);
     wd.findElement(By.name("group_footer")).click();
     wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys("test3");
+    wd.findElement(By.name("group_footer")).sendKeys(footer);
   }
 
   private void initGroupCreation() {
