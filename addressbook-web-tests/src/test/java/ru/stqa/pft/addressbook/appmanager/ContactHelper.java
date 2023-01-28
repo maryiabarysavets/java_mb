@@ -36,4 +36,13 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
     wd.get("http://localhost/addressbook/edit.php");
   }
+
+  public void initContactModification() {
+    click(By.id("2"));
+    click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public void submitModificationContact() {
+    click (By.name("update"));
+  }
 }
