@@ -3,6 +3,9 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.Browser;
+import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 
@@ -12,8 +15,21 @@ public class ApplicationManager  {
   private NavigationHelper navigationHelper;
   private ContactHelper contactHelper;
   private GroupHelper groupHelper;
+private final String browser;
+
+ public ApplicationManager(String browser) {
+ this.browser = browser;
+}
 
   public void init() {
+ if(browser == Browser.IE.browserName()){
+   wd = new InternetExplorerDriver();
+ } else if (browser == Browser.CHROME.browserName()){
+   wd = new ChromeDriver();
+  } else if (browser == Browser.SAFARI.browserName()) {
+     wd = new SafariDriver();
+    }
+
     System.setProperty("web-driver.chrome.driver", "");
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
