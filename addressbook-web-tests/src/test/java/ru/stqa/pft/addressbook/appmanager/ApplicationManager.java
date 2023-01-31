@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,25 +8,25 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 
-public class ApplicationManager  {
+public class ApplicationManager {
   WebDriver wd;
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private ContactHelper contactHelper;
   private GroupHelper groupHelper;
-private final String browser;
+  private final String browser;
 
- public ApplicationManager(String browser) {
- this.browser = browser;
-}
+  public ApplicationManager(String browser) {
+    this.browser = browser;
+  }
 
   public void init() {
- if(browser.equals(Browser.FIREFOX.browserName())){
-   wd = new FirefoxDriver();
- } else if (browser.equals(Browser.CHROME.browserName())){
-   wd = new ChromeDriver();
-  } else if (browser.equals(Browser.SAFARI.browserName())) {
-     wd = new SafariDriver();
+    if (browser.equals(Browser.FIREFOX.browserName())) {
+      wd = new FirefoxDriver();
+    } else if (browser.equals(Browser.CHROME.browserName())) {
+      wd = new ChromeDriver();
+    } else if (browser.equals(Browser.SAFARI.browserName())) {
+      wd = new SafariDriver();
     }
 
     System.setProperty("web-driver.chrome.driver", "");
@@ -42,23 +41,15 @@ private final String browser;
     sessionHelper.login("admin", "secret");
   }
 
-
-
   public void stop() {
     wd.quit();
-  }
-
-
-  public void returnToHomePage() {
-    wd.findElement(By.linkText("home page")).click();
-    wd.get("http://localhost/addressbook/index.php");
   }
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
   }
 
-  public ru.stqa.pft.addressbook.appmanager.ContactHelper getContactHelper() {
+  public ContactHelper getContactHelper() {
     return contactHelper;
   }
 
