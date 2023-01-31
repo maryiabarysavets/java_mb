@@ -32,7 +32,7 @@ private final String browser;
 
     System.setProperty("web-driver.chrome.driver", "");
     wd = new ChromeDriver();
-    wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+    wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
     wd.get("http://localhost/addressbook/index.php");
 
     groupHelper = new GroupHelper(wd);
