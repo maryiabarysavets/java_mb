@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -64,5 +65,27 @@ public class ContactHelper extends HelperBase {
 
   public void acceptAlert() {
     wd.switchTo().alert().accept();
+  }
+
+
+  public void createContact(ContactData contact) {
+    createNewContact();
+    fillContactForm(new ContactData("Maryia", "Barysavets", "375336514233", "mariaborisovets@gmail.com", "Minsk", "test1"), true);
+    submit();
+  }
+
+  public boolean isThereContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public boolean isThereGroup() {
+    createNewContact();
+    try {
+      Select group = new Select(wd.findElement(By.name("new_group")));
+      group.selectByVisibleText("test1");
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    }
   }
 }
