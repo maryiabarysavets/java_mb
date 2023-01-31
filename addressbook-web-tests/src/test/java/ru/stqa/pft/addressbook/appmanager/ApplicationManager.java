@@ -3,7 +3,7 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -22,11 +22,11 @@ private final String browser;
 }
 
   public void init() {
- if(browser == Browser.IE.browserName()){
-   wd = new InternetExplorerDriver();
- } else if (browser == Browser.CHROME.browserName()){
+ if(browser.equals(Browser.FIREFOX.browserName())){
+   wd = new FirefoxDriver();
+ } else if (browser.equals(Browser.CHROME.browserName())){
    wd = new ChromeDriver();
-  } else if (browser == Browser.SAFARI.browserName()) {
+  } else if (browser.equals(Browser.SAFARI.browserName())) {
      wd = new SafariDriver();
     }
 

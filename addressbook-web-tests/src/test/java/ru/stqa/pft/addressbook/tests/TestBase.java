@@ -7,7 +7,6 @@ import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 
-  //protected final ApplicationManager app = new ApplicationManager();
   protected final ApplicationManager app = new ApplicationManager(Browser.SAFARI.browserName());
 
   @BeforeMethod(alwaysRun = true)
