@@ -68,7 +68,7 @@ public class ContactHelper extends HelperBase {
   }
 
 
-  public void createContact(ContactData contact) {
+  public void createAndFillContact(ContactData contact) {
     createNewContact();
     fillContactForm(new ContactData("Maryia", "Barysavets", "375336514233", "mariaborisovets@gmail.com", "Minsk", "test1"), true);
     submit();
@@ -78,11 +78,11 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public boolean isThereGroup() {
+  public boolean isThereGroupToSelect(String groupToFind) {
     createNewContact();
     try {
       Select group = new Select(wd.findElement(By.name("new_group")));
-      group.selectByVisibleText("test1");
+      group.selectByVisibleText(groupToFind);
       return true;
     } catch (NoSuchElementException ex) {
       return false;
