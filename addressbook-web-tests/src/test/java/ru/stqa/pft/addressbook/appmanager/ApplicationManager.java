@@ -29,8 +29,6 @@ public class ApplicationManager {
       wd = new SafariDriver();
     }
 
-   // System.setProperty("web-driver.chrome.driver", "");
-  //  wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
     wd.get("http://localhost/addressbook");
 
