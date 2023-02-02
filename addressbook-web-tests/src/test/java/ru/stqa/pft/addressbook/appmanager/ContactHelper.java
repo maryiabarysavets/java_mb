@@ -74,11 +74,11 @@ public class ContactHelper extends HelperBase {
     submit();
   }
 
-  public boolean isThereContact() {
+  public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public boolean isThereGroupToSelect(String groupToFind) {
+  public boolean isThereAGroupToSelect(String groupToFind) {
     createNewContact();
     try {
       Select group = new Select(wd.findElement(By.name("new_group")));

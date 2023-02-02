@@ -10,8 +10,8 @@ public class ContactModificationTests extends TestBase {
 
   public void testContactModification() {
     String group = "test1";
-    if (!app.getContactHelper().isThereContact()) {
-      if (!app.getContactHelper().isThereGroupToSelect(group)){
+    if (!app.getContactHelper().isThereAContact()) {
+      if (!app.getContactHelper().isThereAGroupToSelect(group)){
         app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().createGroup(new GroupData(group, null, null));
       }
