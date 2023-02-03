@@ -16,8 +16,8 @@ public class ContactModificationTests extends TestBase {
     String group = "test1";
     if (!app.getContactHelper().isThereAContact()) {
       if (!app.getContactHelper().isThereAGroupToSelect(group)){
-        app.getNavigationHelper().gotoGroupPage();
-        app.getGroupHelper().createGroup(new GroupData(group, null, null));
+        app.goTo().groupPage();
+        app.group().create(new GroupData(group, null, null));
       }
       app.getContactHelper().fillContactForm(new ContactData("Maryia", "Barysavets", "Minsk", "375336514233", "mariaborisovets@gmail.com", group), true);
     }
@@ -26,7 +26,7 @@ public class ContactModificationTests extends TestBase {
     app.getContactHelper().initContactModification();
     app.getContactHelper().fillContactForm(contact, false);
     app.getContactHelper().submitModificationContact();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
 
