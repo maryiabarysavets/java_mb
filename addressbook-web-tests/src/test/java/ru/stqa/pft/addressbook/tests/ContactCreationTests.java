@@ -22,7 +22,7 @@ public class ContactCreationTests extends TestBase {
     app.getNavigationHelper().gotoHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().createNewContact();
-    ContactData contact = new ContactData("Maryia", "Barysavets", "375336514233", "mariaborisovets@gmail.com", "Minsk", group);
+    ContactData contact = new ContactData("Maryia", "Barysavets", "Minsk", "mariaborisovets@gmail.com", "375336514233", group);
     app.getContactHelper().fillContactForm(contact, true);
     app.getContactHelper().submit();
     app.getNavigationHelper().gotoHomePage();
