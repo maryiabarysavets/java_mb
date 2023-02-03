@@ -3,9 +3,13 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -46,17 +50,19 @@ public class ContactHelper extends HelperBase {
     wd.get("http://localhost/addressbook/edit.php");
   }
 
-  public void initContactModification() {
-    click(By.name("selected[]"));
-    click(By.xpath("//img[@alt='Edit']"));
+  public void initContactModification(int id) {
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
   }
 
   public void submitModificationContact() {
     click(By.name("update"));
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteContact() {
@@ -70,7 +76,7 @@ public class ContactHelper extends HelperBase {
 
   public void createAndFillContact(ContactData contact) {
     createNewContact();
-    fillContactForm(new ContactData("Maryia", "Barysavets", "375336514233", "mariaborisovets@gmail.com", "Minsk", "test1"), true);
+    fillContactForm(contact, true);
     submit();
   }
 
@@ -87,5 +93,22 @@ public class ContactHelper extends HelperBase {
     } catch (NoSuchElementException ex) {
       return false;
     }
+  }
+  public List<ContactData> getContactList() {
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
+    for (WebElement element : elements) {
+      List<WebElement> cells = element.findElements(By.tagName("td"));
+      String firstName = cells.get(2).getText();
+      String lastName = cells.get(1).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      ContactData contact = new ContactData(id, firstName, lastName, null, null, null, null);
+      contacts.add(contact);
+    }
+    return contacts;
+  }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 }
