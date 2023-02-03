@@ -26,9 +26,9 @@ public class ContactData {
     this.id = Integer.MAX_VALUE;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.address = address;
     this.mobile = mobile;
     this.email = email;
-    this.address = address;
     this.group = group;
   }
 
@@ -45,6 +45,9 @@ public class ContactData {
   public String getLastName() {
     return lastName;
   }
+  public String getAddress() {
+    return address;
+  }
 
   public String getMobile() {
     return mobile;
@@ -54,9 +57,7 @@ public class ContactData {
     return email;
   }
 
-  public String getAddress() {
-    return address;
-  }
+
 
   public String getGroup() {
     return group;

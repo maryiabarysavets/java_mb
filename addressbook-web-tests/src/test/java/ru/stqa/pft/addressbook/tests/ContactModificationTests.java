@@ -19,11 +19,12 @@ public class ContactModificationTests extends TestBase {
         app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().createGroup(new GroupData(group, null, null));
       }
-      app.getContactHelper().fillContactForm(new ContactData("Maryia", "Barysavets", "Minsk", "375336514233", "mariaborisovets@gmail.com", group), true);
+      app.getContactHelper().createAndFillContact(new ContactData("Maryia", "Barysavets", "Minsk", "375336514233", "mariaborisovets@gmail.com", group));
     }
+    app.getNavigationHelper().gotoHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
-    ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "Kolya", "Gavrilovets", "Moscow", "375336514233", "mariaborisovets@gmail.com", null);
-    app.getContactHelper().initContactModification();
+    ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "Maryia", "Barysavets", "Moscow", "375336514233", "mariaborisovets@gmail.com", null);
+    app.getContactHelper().initContactModification(contact.getId());
     app.getContactHelper().fillContactForm(contact, false);
     app.getContactHelper().submitModificationContact();
     app.getNavigationHelper().gotoHomePage();

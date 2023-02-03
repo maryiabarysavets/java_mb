@@ -50,10 +50,16 @@ public class ContactHelper extends HelperBase {
     wd.get("http://localhost/addressbook/edit.php");
   }
 
-  public void initContactModification() {
-      click(By.name("selected[]"));
-      click(By.xpath("//img[@alt='Edit']"));
-  }
+ // public void initContactModification(int index) {
+ //   wd.findElements(By.name("selected[]")).get(index).click();
+//    wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
+ // }
+ public void initContactModification(int id) {
+   WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+   WebElement row = checkbox.findElement(By.xpath("./../.."));
+   List<WebElement> cells = row.findElements(By.tagName("td"));
+   cells.get(7).findElement(By.tagName("a")).click();
+ }
 
   public void submitModificationContact() {
     click(By.name("update"));
