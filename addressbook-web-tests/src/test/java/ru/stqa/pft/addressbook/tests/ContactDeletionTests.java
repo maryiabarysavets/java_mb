@@ -23,7 +23,7 @@ public class ContactDeletionTests extends TestBase {
         app.group().create(new GroupData().withName(group));
       }
       app.contact().createAndFill(new ContactData().withFirstName("Maryia").withLastName("Barysavets")
-              .withAddress("Minsk").withMobile("375336514233").withEmail("maryiabarysavets").withGroup(group));
+              .withAddress("Minsk").withMobilePhone("375336514233").withEmail("maryiabarysavets").withGroup(group));
     }
   }
 
