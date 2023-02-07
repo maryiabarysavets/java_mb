@@ -18,15 +18,15 @@ public class ContactHelper extends HelperBase {
   }
 
 
-  public void click(By locator) {
-    wd.findElement(locator).click();
-  }
+ // public void click(By locator) {
+ //   wd.findElement(locator).click();
+ // }
 
-  public void type(By locator, String text) {
-    click(locator);
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
-  }
+ // public void type(By locator, String text) {
+ //   click(locator);
+ //   wd.findElement(locator).clear();
+ //   wd.findElement(locator).sendKeys(text);
+ // }
 
   public void addNew() {
     click(By.linkText("add new"));
@@ -50,7 +50,10 @@ public class ContactHelper extends HelperBase {
     attach(By.name("photo"),contactData.getPhoto());
 
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if (contactData.getGroup() != null) {
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      }
+
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
