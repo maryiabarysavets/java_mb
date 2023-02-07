@@ -23,6 +23,7 @@ public class ContactDataGenerator {
 
   @Parameter(names = "-d", description = "Data format")
   public String format;
+  private String group;
 
   public static void main(String[] args) throws IOException {
     ContactDataGenerator generator = new ContactDataGenerator();
@@ -37,7 +38,7 @@ public class ContactDataGenerator {
   }
 
   private void run() throws IOException {
-    List<ContactData> contacts = generateContacts(count);
+    List<ContactData> contacts = generateContacts(count,group);
     if (format.equals("json")) {
       saveAsJson(contacts, new File(file));
     } else {
@@ -53,7 +54,7 @@ public class ContactDataGenerator {
     writer.close();
   }
 
-  private List<ContactData> generateContacts(int count) {
+  private List<ContactData> generateContacts(int count, String group) {
     List<ContactData> contacts = new ArrayList<>();
     for (int i = 0; i < count; i++) {
       contacts.add(new ContactData().withFirstName(String.format("Maryia%s", i))
