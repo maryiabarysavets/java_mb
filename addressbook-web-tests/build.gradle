@@ -9,6 +9,7 @@ dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.8.0'
     implementation 'org.hamcrest:java-hamcrest:2.0.0.0'
     implementation 'com.beust:jcommander:1.82'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.20'
 }
 
 test() {
