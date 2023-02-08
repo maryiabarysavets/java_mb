@@ -17,6 +17,17 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
+
+  public void click(By locator) {
+    wd.findElement(locator).click();
+  }
+
+  public void type(By locator, String text) {
+    click(locator);
+    wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);
+  }
+
   public void addNew() {
     click(By.linkText("add new"));
     wd.get("http://localhost/addressbook/edit.php");
@@ -38,9 +49,13 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     type(By.name("address"), contactData.getAddress());
+    attach(By.name("photo"),contactData.getPhoto());
 
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if (contactData.getGroup() != null) {
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      }
+
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
