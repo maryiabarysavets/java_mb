@@ -17,17 +17,6 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
-
-  public void click(By locator) {
-    wd.findElement(locator).click();
-  }
-
-  public void type(By locator, String text) {
-    click(locator);
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
-  }
-
   public void addNew() {
     click(By.linkText("add new"));
     wd.get("http://localhost/addressbook/edit.php");
