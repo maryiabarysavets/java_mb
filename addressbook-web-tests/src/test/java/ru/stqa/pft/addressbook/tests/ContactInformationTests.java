@@ -22,8 +22,9 @@ public class ContactInformationTests extends TestBase {
         app.group().create(new GroupData().withName(group));
       }
       app.contact().createAndFill(new ContactData().withFirstName("Maryia").withLastName("Barysavets")
-              .withAddress("Minsk").withMobilePhone("375336514233").withHomePhone("801734332344")
-              .withWorkPhone("8 017 234 573 45").withEmail("maryiabarysavets@gmail.com").withGroup(group));
+              .withAddress("Minsk").withMobilePhone("375336514233").withHomePhone("801745678657").withWorkPhone("8017786655")
+              .withEmail("maryiabarysavets@gmail.com").withEmail2("test@gmail.com").withEmail3("test+1@gmail.com").withGroup(group));
+
     }
   }
 
