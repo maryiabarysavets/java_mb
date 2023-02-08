@@ -19,7 +19,6 @@ public class ContactHelper extends HelperBase {
 
   public void addNew() {
     click(By.linkText("add new"));
-    wd.get("http://localhost/addressbook/edit.php");
   }
 
   public void create(ContactData contact) {
