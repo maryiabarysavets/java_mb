@@ -20,6 +20,7 @@ public class ApplicationManager {
   private ContactHelper contactHelper;
   private GroupHelper groupHelper;
   private final String browser;
+  private DbHelper dbHelper;
 
   public ApplicationManager(String browser)  {
     this.browser = browser;
@@ -30,6 +31,7 @@ public class ApplicationManager {
   public void init()throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
+    dbHelper = new DbHelper();
     if (browser.equals(Browser.FIREFOX.browserName())) {
       wd = new FirefoxDriver();
     } else if (browser.equals(Browser.CHROME.browserName())) {
@@ -40,7 +42,6 @@ public class ApplicationManager {
 
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
     wd.get(properties.getProperty("web.baseUrl"));
-
     groupHelper = new GroupHelper(wd);
     contactHelper = new ContactHelper(wd);
     navigationHelper = new NavigationHelper(wd);
@@ -62,5 +63,9 @@ public class ApplicationManager {
 
   public NavigationHelper goTo() {
     return navigationHelper;
+  }
+
+  public DbHelper db () {
+    return new DbHelper();
   }
 }
