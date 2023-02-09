@@ -58,7 +58,7 @@ public class ContactCreationTests extends TestBase {
     Contacts before = app.contact().all();
     File photo = new File("src/test/resources/IMG_9923.jpg");
     //  ContactData contact = new ContactData().withFirstName("Maryia").withLastName("Barysavets")
-    //          .withAddress("Minsk").withMobilePhone("375336514233").withHomePhone("801745678657").withWorkPhone("8017786655")
+    //          .withAddress("Minsk").withMobilePhone("375336514233").withHomePhone("801745678657").withWorkPhone("8017786655").withPhone2("80172349067")
     //         .withEmail("maryiabarysavets@gmail.com").withEmail2("test@gmail.com").withEmail3("test+1@gmail.com").withGroup(group);
     app.contact().create(contact);
     app.goTo().homePage();

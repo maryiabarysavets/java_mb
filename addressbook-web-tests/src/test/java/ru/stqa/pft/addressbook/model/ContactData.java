@@ -27,6 +27,17 @@ public class ContactData {
   private String allPhones;
   private File photo;
 
+  public String getPhone2() {
+    return phone2;
+  }
+
+  public ContactData withPhone2(String phone2) {
+    this.phone2 = phone2;
+    return this;
+  }
+
+  private String phone2;
+
   public File getPhoto() {
     return photo;
   }
