@@ -8,8 +8,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -45,7 +47,6 @@ public class ContactHelper extends HelperBase {
         Assert.assertTrue(contactData.getGroups().size() == 1);
         new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
       }
-
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -157,6 +158,29 @@ public class ContactHelper extends HelperBase {
             .withMobilePhone(mobile).withHomePhone(home).withWorkPhone(work).withPhone2(phone2).withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3);
   }
 
+  public void addContactToGroup(String groupId) {
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(groupId);
+    click(By.xpath("//input[@name='add']"));
+  }
+
+  public ContactData contactInGroup(Contacts contacts) {
+    for (ContactData contact : contacts) {
+      Set<GroupData> contactInGroup = contact.getGroups();
+      if (contact.getGroups().size() > 0) {
+        return contact;
+      }
+    }
+    return null;
+  }
+
+  public void selectGroup(String name) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(name);
+  }
+
+  public void removeSelectedContactFromGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    click(By.cssSelector("input[name='remove']"));
+  }
 }
 
 
