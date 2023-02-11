@@ -33,14 +33,16 @@ public class ContactRemoveFromGroupTests extends TestBase {
   }
 
   @Test
-  public void testContactRemoveGroup() {
+  public void testContactRemoveGroup() throws InterruptedException {
     Contacts contacts = app.db().contacts();
     ContactData selectedContact = app.contact().contactInGroup(contacts);
     Groups before = selectedContact.getGroups();
     GroupData selectedGroup = selectedGroup();
+//   Thread.sleep(3000);
+    app.goTo().home();
     app.contact().selectGroup(selectedGroup.getName());
     app.contact().removeSelectedContactFromGroup(app.contact().contactInGroup(contacts));
-    Groups  after = selectedContact.getGroups().withAdded(selectedGroup);
+    Groups after = selectedContact.getGroups().withAdded(selectedGroup);
     assertThat(after, equalTo(before));
   }
 

@@ -11,6 +11,7 @@ import java.util.Set;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+
 public class ContactAddToGroupTests extends TestBase {
 
   @BeforeMethod
