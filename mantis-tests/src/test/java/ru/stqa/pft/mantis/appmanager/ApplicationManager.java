@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 
 public class ApplicationManager {
@@ -21,6 +20,7 @@ public class ApplicationManager {
   private String browser;
 
   private RegistrationHelper registrationHelper;
+  private FtpHelper ftp;
 
   public ApplicationManager(String browser) throws IOException {
     this.browser = browser;
@@ -52,6 +52,13 @@ public class ApplicationManager {
       return new RegistrationHelper(this);
     }
     return registrationHelper;
+  }
+
+  public FtpHelper ftp() {
+    if (ftp == null) {
+      ftp = new FtpHelper(this);
+    }
+    return ftp;
   }
 
   public WebDriver getDriver() {
