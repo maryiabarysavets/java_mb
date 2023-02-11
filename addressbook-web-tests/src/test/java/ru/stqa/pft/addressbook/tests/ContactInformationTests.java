@@ -23,7 +23,7 @@ public class ContactInformationTests extends TestBase {
       }
       app.contact().createAndFill(new ContactData().withFirstName("Maryia").withLastName("Barysavets")
               .withAddress("Minsk").withMobilePhone("375336514233").withHomePhone("8 017 456 78 65").withWorkPhone("8-017-786-655").withPhone2("80172349067")
-              .withEmail("maryiabarysavets@gmail.com").withEmail2("test@gmail.com").withEmail3("test+1@gmail.com"));//.withGroup(group));
+              .withEmail("maryiabarysavets@gmail.com").withEmail2("t-e-s-t@gmail.com").withEmail3("test+1@gmail.com"));//.withGroup(group));
 
     }
   }
@@ -48,7 +48,6 @@ public class ContactInformationTests extends TestBase {
   private String mergeEmails(ContactData contact) {
     return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
             .stream().filter((s) -> !s.equals(""))
-            .map(ContactInformationTests::cleaned)
             .collect(Collectors.joining("\n"));
   }
 
