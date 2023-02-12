@@ -21,6 +21,7 @@ public class ApplicationManager {
 
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
+  private MailHelper mailHelper;
 
   public ApplicationManager(String browser) throws IOException {
     this.browser = browser;
@@ -49,7 +50,7 @@ public class ApplicationManager {
 
   public RegistrationHelper registration() {
     if (registrationHelper == null) {
-      return new RegistrationHelper(this);
+      registrationHelper = new RegistrationHelper(this);
     }
     return registrationHelper;
   }
@@ -75,5 +76,12 @@ public class ApplicationManager {
       wd.get(properties.getProperty("web.baseUrl"));
     }
     return wd;
+  }
+
+  public MailHelper mail() {
+    if (mailHelper == null) {
+      mailHelper = new MailHelper(this);
+    }
+    return mailHelper;
   }
 }
