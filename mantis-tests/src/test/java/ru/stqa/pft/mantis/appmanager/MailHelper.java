@@ -19,7 +19,7 @@ public class MailHelper {
     wiser = new Wiser();//почтовый сервер
   }
 
-  public List<MailMessage> waitForMail(int count, long timeout) throws MessagingException, IOException, Error {
+  public List<MailMessage> waitForMail(int count, long timeout) throws MessagingException, IOException {
     long start = System.currentTimeMillis();
     while (System.currentTimeMillis() < start + timeout) {
       if (wiser.getMessages().size() >= count) {
