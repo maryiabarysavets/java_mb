@@ -23,6 +23,8 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
+  private ChangePasswordHelper changePasswordHelper;
+
 
   public ApplicationManager(String browser) throws IOException {
     this.browser = browser;
@@ -91,5 +93,12 @@ public class ApplicationManager {
       jamesHelper = new JamesHelper(this);
     }
     return jamesHelper;
+  }
+
+  public ChangePasswordHelper changePasswordHelper() {
+    if (changePasswordHelper == null) {
+      changePasswordHelper = new ChangePasswordHelper(this);
+    }
+    return changePasswordHelper;
   }
 }
