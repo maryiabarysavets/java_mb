@@ -19,7 +19,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'no.nils:wsdl2java:0.10'
+        classpath 'no.nils:wsdl2java:0.12'
     }
 }
 
@@ -30,5 +30,5 @@ wsdl2java {
     wsdlsToGenerate = [   //  2d-array of wsdls and cxf-parameters
                           ["$projectDir/src/main/resources/geoipservice.wsdl"],
     ]
-//    cxfVersion = "2.7.0"
+    cxfVersion = "2.7.0"
 }
