@@ -9,8 +9,13 @@ public class GeoIpServiceTests {
 
   @Test
   public void testMyIp() {
-    String geoIp = new GeoIPService().getGeoIPServiceSoap12().getIpLocation("37.214.61.139");
-    System.out.println(geoIp);
-    //   assertEquals(geoIp.get)
+    String ipLocation = new GeoIPService().getGeoIPServiceSoap12().getIpLocation("37.214.61.139");
+    assertEquals(ipLocation, "<GeoIP><Country>BY</Country><State>06</State></GeoIP>");
+  }
+
+  @Test
+  public void testInvalidIp() {
+    String ipLocation = new GeoIPService().getGeoIPServiceSoap12().getIpLocation("37.214.61.xxx");
+    assertEquals(ipLocation, "<GeoIP><Country>US</Country><State>CA</State></GeoIP>");
   }
 }
