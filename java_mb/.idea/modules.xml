@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github-sample.main.iml" filepath="$PROJECT_DIR$/.idea/modules/github-sample.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/github-sample.test.iml" filepath="$PROJECT_DIR$/.idea/modules/github-sample.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_mb.iml" filepath="$PROJECT_DIR$/java_mb.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mantis-tests.test.iml" filepath="$PROJECT_DIR$/.idea/modules/mantis-tests.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/rest-sample.main.iml" filepath="$PROJECT_DIR$/.idea/modules/rest-sample.main.iml" />
