@@ -1,4 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -10,7 +11,6 @@ import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-
 
 public class ContactAddToGroupTests extends TestBase {
 
@@ -30,15 +30,19 @@ public class ContactAddToGroupTests extends TestBase {
   @Test
   public void addContactToGroup() {
     Contacts contacts = app.db().contacts();
-    ContactData selectedContact= contactToAddToGroup(contacts);
-    Groups  before = selectedContact.getGroups();
+    ContactData selectedContact = contactToAddToGroup(contacts);
+    GroupData groupToAdd = groupWithoutContact();
+    Groups contactGroupsBefore = selectedContact.getGroups();
+    Contacts groupContactsBefore = groupToAdd.getContacts();
     app.goTo().home();
     app.contact().selectContactById(selectedContact.getId());
-    GroupData groupToAdd = groupWithoutContact();
     app.contact().addContactToGroup(String.valueOf(groupToAdd.getId()));
-    ContactData contactAddedToGroup = selectedContact.inGroup(groupToAdd);
-    Groups  after = selectedContact.getGroups();
-    assertThat(after, equalTo(before.withAdded(groupToAdd)));
+    ContactData selectedContactAfter = app.db().contactById(selectedContact.getId());
+    GroupData groupToAddAfter = app.db().getGroupById(groupToAdd.getId());
+    Groups contactGroupsAfter = selectedContactAfter.getGroups();
+    Contacts groupContactsAfter = groupToAddAfter.getContacts();
+    assertThat(contactGroupsAfter, equalTo(contactGroupsBefore.withAdded(groupToAdd)));
+    assertThat(groupContactsAfter, equalTo(groupContactsBefore.withAdded(selectedContactAfter)));
 
   }
 

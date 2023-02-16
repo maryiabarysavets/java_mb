@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
-import org.testng.annotations.*;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -36,14 +38,18 @@ public class ContactRemoveFromGroupTests extends TestBase {
   public void testContactRemoveGroup() throws InterruptedException {
     Contacts contacts = app.db().contacts();
     ContactData selectedContact = app.contact().contactInGroup(contacts);
-    Groups before = selectedContact.getGroups();
     GroupData selectedGroup = selectedGroup();
-//   Thread.sleep(3000);
+    Groups contactGroupsBefore = app.db().contactById(selectedContact.getId()).getGroups();
+    Contacts groupContactsBefore = app.db().getGroupById(selectedGroup.getId()).getContacts();
     app.goTo().home();
     app.contact().selectGroup(selectedGroup.getName());
     app.contact().removeSelectedContactFromGroup(app.contact().contactInGroup(contacts));
-    Groups after = selectedContact.getGroups().withAdded(selectedGroup);
-    assertThat(after, equalTo(before));
+    ContactData selectedContactAfter = app.db().contactById(selectedContact.getId());
+    GroupData groupAfterRemove = app.db().getGroupById(selectedGroup.getId());
+    Groups contactGroupsAfter = selectedContactAfter.getGroups();
+    Contacts groupContactsAfter = groupAfterRemove.getContacts();
+    assertThat(contactGroupsAfter, equalTo(contactGroupsBefore.without(selectedGroup)));
+    assertThat(groupContactsAfter, equalTo(groupContactsBefore.without(selectedContact)));
   }
 
   public GroupData selectedGroup() {
