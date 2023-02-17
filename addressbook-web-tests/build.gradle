@@ -41,7 +41,10 @@ task testContacts(type: Test) {
         suites 'src/test/resources/testng-contacts.xml'
     }
     if (project.hasProperty('browser')) {
-        systemProperty 'browser', "${target}"
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
     }
 
     if (project.hasProperty('verifyUI')) {
